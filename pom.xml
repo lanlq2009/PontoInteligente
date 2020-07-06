@@ -12,7 +12,7 @@
 	<artifactId>PontoInteligente</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PontoInteligente</name>
-	<description>Estutos </description>
+	<description>Estutos de springboot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
