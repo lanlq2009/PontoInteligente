@@ -8,8 +8,3 @@ addons:
       - oracle-java9-installer
 before_install:
   - chmod +x mvnw
-#language: java
-#jdk: oraclejdk9
-#install: true
-#script: ./mvnw clean install
-
