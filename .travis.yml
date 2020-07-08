@@ -8,7 +8,6 @@ addons:
       - oracle-java9-installer
 before_install:
   - chmod +x mvnw
- #- mysql -e 'CREATE DATABASE pontointeligente;'
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+ - mysql -e 'CREATE DATABASE pontointeligente;'
 services:
   - mysql 
