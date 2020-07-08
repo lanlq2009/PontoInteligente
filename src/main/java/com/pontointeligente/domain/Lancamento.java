@@ -25,10 +25,6 @@ import com.pontointeligente.utils.DateUtils;
 @Table(name = "lancamento")
 public class Lancamento implements Serializable {
 	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
@@ -135,6 +131,15 @@ public class Lancamento implements Serializable {
         this.dataCriacao = atual;
         this.dataAtualizacao = atual;
     }
+
+	@Override
+	public String toString() {
+		return "Lancamento [id=" + id + ", data=" + data + ", descricao=" + descricao + ", localizacao=" + localizacao
+				+ ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", tipo=" + tipo
+				+ ", funcionario=" + funcionario + "]";
+	}
+    
+    
 	
 
 }

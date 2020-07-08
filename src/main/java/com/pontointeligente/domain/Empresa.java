@@ -23,9 +23,6 @@ import com.pontointeligente.utils.DateUtils;
 @Table(name = "empresa")
 public class Empresa implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 		
 	private Long id;
@@ -106,6 +103,13 @@ public class Empresa implements Serializable{
     private Date getDataAtual() {
     	return DateUtils.getDataAtual();
     }
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+				+ ", dataAtualizacao=" + dataAtualizacao + ", funcionarios=" + funcionarios + "]";
+	}
+    
+    
 	
 	
 

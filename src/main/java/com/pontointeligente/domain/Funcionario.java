@@ -29,12 +29,7 @@ import com.pontointeligente.utils.DateUtils;
 @Entity
 @Table(name = "funcionario")
 public class Funcionario implements Serializable {
-	
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
@@ -210,5 +205,15 @@ public class Funcionario implements Serializable {
         dataCriacao = atual;
         dataAtualizacao = atual;
     }
+
+	@Override
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
+				+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
+				+ qtdHorasAlmoco + ", perfil=" + perfil + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
+				+ dataAtualizacao + ", empresa=" + empresa + ", lancamentos=" + lancamentos + "]";
+	}
+    
+    
 
 }

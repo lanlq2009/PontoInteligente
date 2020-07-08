@@ -9,4 +9,4 @@ addons:
 before_install:
   - chmod +x mvnw
 services:
-  - mysql  
+  - mysql 
