@@ -15,8 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.pontointeligente.utils.DateUtils;
+
 
 
 @Entity
@@ -100,6 +102,8 @@ public class Empresa implements Serializable{
         dataAtualizacao = dataAtual;
     }
     
+    
+    @Transient
     private Date getDataAtual() {
     	return DateUtils.getDataAtual();
     }
