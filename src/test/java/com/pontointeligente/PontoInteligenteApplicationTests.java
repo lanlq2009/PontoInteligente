@@ -30,7 +30,8 @@ public class PontoInteligenteApplicationTests {
   @Before 
   public void setUp() { 
 	  Empresa empresa = new EmpresaBuilder().comCnpj(CNPJ).comRazaoSocial("Exemplo").build();
-	  this.respository.save(empresa); 
+	  empresa = this.respository.save(empresa); 
+	  System.out.println(" :: empresa " + empresa.getId());
   }
 	  
   @After public void setDown() { 

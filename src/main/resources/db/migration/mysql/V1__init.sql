@@ -1,13 +1,14 @@
  CREATE TABLE `EMPRESA` (
-  `id` bigint(20)  PRIMARY KEY NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cnpj` varchar(255) NOT NULL,
   `data_atualizacao` datetime NOT NULL,
   `data_criacao` datetime NOT NULL,
-  `razao_social` varchar(255) NOT NULL
+  `razao_social` varchar(255) NOT NULL,
+  PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `FUNCIONARIO` (
-  `id` bigint(20) PRIMARY KEY NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cpf` varchar(255) NOT NULL,
   `data_atualizacao` datetime NOT NULL,
   `data_criacao` datetime NOT NULL,
@@ -19,11 +20,12 @@ CREATE TABLE `FUNCIONARIO` (
   `senha` varchar(255) NOT NULL,
   `valor_hora` decimal(19,2) DEFAULT NULL,
   `empresa_id` bigint(20) DEFAULT NULL,
+   PRIMARY KEY(`id`),
    FOREIGN KEY (`empresa_id`) REFERENCES `EMPRESA` (`id`)
 );
 
 CREATE TABLE `lancamento` (
-  `id` bigint(20)  PRIMARY KEY NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `data` datetime NOT NULL,
   `data_atualizacao` datetime NOT NULL,
   `data_criacao` datetime NOT NULL,
@@ -31,6 +33,7 @@ CREATE TABLE `lancamento` (
   `localizacao` varchar(255) DEFAULT NULL,
   `tipo` varchar(255) NOT NULL,
   `funcionario_id` bigint(20) DEFAULT NULL,
+   PRIMARY KEY(`id`),
    FOREIGN KEY (`funcionario_id`) REFERENCES `FUNCIONARIO` (`id`)
 );
 
