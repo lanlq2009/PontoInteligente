@@ -1,11 +1,11 @@
  package com.pontointeligente;
  
  
-  import static org.junit.Assert.assertNull;
+  import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,7 +29,6 @@ public class PontoInteligenteApplicationTests {
   
   @Before 
   public void setUp() { 
-	  System.out.println("teste");
 	  Empresa empresa = new EmpresaBuilder().comCnpj(CNPJ).comRazaoSocial("Exemplo").build();
 	  this.respository.save(empresa); 
   }
@@ -40,9 +39,9 @@ public class PontoInteligenteApplicationTests {
 	  
   @Test 
   public void buscarPorCnpjTest() { 
-		Empresa empresa = this.respository.findByCnpj(CNPJ); 
-		//assertEquals(cnpj, empresa.getCnpj()); 
-		assertNull(empresa); 
+	  Empresa empresa = this.respository.findByCnpj(CNPJ); 
+	  assertEquals(CNPJ, empresa.getCnpj()); 
+	
    }
   
   
