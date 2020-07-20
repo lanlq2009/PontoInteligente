@@ -2,6 +2,7 @@ package com.pontointeligente.services.impl;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pontointeligente.domain.Empresa;
@@ -12,6 +13,8 @@ import com.pontointeligente.services.EmpresaService;
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
 	
+	
+	@Autowired
 	private EmpresaRepository repository;
 
 	@Override

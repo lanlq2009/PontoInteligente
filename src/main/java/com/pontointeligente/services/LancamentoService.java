@@ -14,8 +14,10 @@ public interface LancamentoService {
 	
     Optional<List<Lancamento>> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId);
 	
-    Optional<Page<Lancamento>> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId, Pageable pageable);
+    Page<Lancamento> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId, Pageable pageable);
 	
 	Lancamento persistir(Lancamento lancamento);
 
+	void remover(Lancamento lancamento);
+	
 }

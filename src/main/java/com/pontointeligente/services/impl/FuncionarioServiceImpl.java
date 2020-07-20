@@ -3,11 +3,14 @@ package com.pontointeligente.services.impl;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.pontointeligente.domain.Funcionario;
 import com.pontointeligente.repository.FuncionarioRepository;
 import com.pontointeligente.services.FuncionarioService;
 
+
+@Service
 public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Autowired
