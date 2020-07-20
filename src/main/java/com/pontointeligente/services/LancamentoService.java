@@ -1,5 +1,21 @@
 package com.pontointeligente.services;
 
-public class LancamentoService {
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
+
+import com.pontointeligente.domain.Lancamento;
+
+public interface LancamentoService {
+	
+	
+    Optional<List<Lancamento>> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId);
+	
+    Optional<Page<Lancamento>> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId, Pageable pageable);
+	
+	Lancamento persistir(Lancamento lancamento);
 
 }
