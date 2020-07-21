@@ -36,4 +36,3 @@ CREATE TABLE `lancamento` (
    PRIMARY KEY(`id`),
    FOREIGN KEY (`funcionario_id`) REFERENCES `FUNCIONARIO` (`id`)
 );
-
