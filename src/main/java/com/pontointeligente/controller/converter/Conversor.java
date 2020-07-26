@@ -4,12 +4,13 @@ import com.pontointeligente.domain.Empresa;
 import com.pontointeligente.domain.Funcionario;
 import com.pontointeligente.enuns.PerfilEnum;
 import com.pontointeligente.model.CadastroPJ;
-import com.pontointeligente.utils.PasswordUtils;
+//import com.pontointeligente.utils.PasswordUtils;
 
 public class Conversor {
 	
 	public Empresa converterEmpresa(CadastroPJ cadastroPj) {
 		Empresa empresa = new Empresa();
+		empresa.setId(null);
 		empresa.setCnpj(cadastroPj.getCnpj());
 		empresa.setRazaoSocial(cadastroPj.getRazaoSocial());
 		return empresa;
@@ -25,7 +26,8 @@ public class Conversor {
 		}else {
 			funcionario.setPerfil(PerfilEnum.ROLE_USUARIO); 	
 		}
-		funcionario.setSenha(PasswordUtils.getEncrypt(cadastroPJDto.getSenha()));
+		//funcionario.setSenha(PasswordUtils.getEncrypt(cadastroPJDto.getSenha()));
+		funcionario.setSenha(cadastroPJDto.getSenha());
 		return funcionario;
 	}
 
