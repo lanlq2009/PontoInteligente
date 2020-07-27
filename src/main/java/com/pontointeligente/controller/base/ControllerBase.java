@@ -1,4 +1,4 @@
-package com.pontointeligente.controller;
+package com.pontointeligente.controller.base;
 
 import com.pontointeligente.controller.converter.Conversor;
 import com.pontointeligente.controller.validator.PontoInteligenteValidator;

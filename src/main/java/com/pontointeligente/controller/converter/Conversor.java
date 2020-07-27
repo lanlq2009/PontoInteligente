@@ -8,6 +8,7 @@ import com.pontointeligente.domain.Funcionario;
 import com.pontointeligente.enuns.PerfilEnum;
 import com.pontointeligente.model.CadastroPF;
 import com.pontointeligente.model.CadastroPJ;
+import com.pontointeligente.model.EmpresaDTO;
 //import com.pontointeligente.utils.PasswordUtils;
 
 public class Conversor {
@@ -72,6 +73,15 @@ public class Conversor {
 	    funcionario.getQtdHorasTrabalhoDiaOpt().ifPresent(qtdHorasTrabalhoDia -> cadastro.setQtdHorasTrabalhadasPorDia(Optional.of(Float.toString(qtdHorasTrabalhoDia))));
 		funcionario.getValorHoraOpt().ifPresent(vlHora -> cadastro.setValorHora(Optional.of(vlHora.toString())));
 		return cadastro;
+	}
+	
+	
+	public EmpresaDTO converterEmpresaParaEmpresaDTO(Empresa empresa) {
+		EmpresaDTO dto = new EmpresaDTO();
+		dto.setId(empresa.getId());
+		dto.setCnpj(empresa.getCnpj());
+		dto.setRazaoSocial(empresa.getRazaoSocial());
+		return dto;
 	}
 	
 }
