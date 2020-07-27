@@ -1,0 +1,19 @@
+Empresa
+{
+  "nome": "teste",
+  "email": "teste@teste.com.br",
+  "senha": "123456",
+  "cpf": "01234567890",
+  "razaoSocial": "Teste exemplo",
+  "cnpj": "21661519000190"
+}
+
+Funcionario
+{
+  "nome": "fulano",
+  "email": "fulano@teste.com.br",
+  "senha": "123456",
+  "cpf": "00306092085",
+  "valorHora": "50",
+  "cnpj": "21661519000190"
+}
