@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pontointeligente.controller.response.Response;
+import com.pontointeligente.controller.utils.ControllerHelper;
 import com.pontointeligente.domain.Empresa;
 import com.pontointeligente.domain.Funcionario;
 import com.pontointeligente.model.CadastroPJ;
@@ -21,7 +22,7 @@ import com.pontointeligente.services.EmpresaService;
 import com.pontointeligente.services.FuncionarioService;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping(ControllerHelper.API)
 @CrossOrigin(origins="*")
 public class CadastroPJController extends ControllerBase {
 	
@@ -42,7 +43,7 @@ public class CadastroPJController extends ControllerBase {
 		  
 		  this.settings();
 		  
-		  this.validator.validarDadosExistentes(cadastroPj, result);
+		  this.validator.validarDadosExistentesCadastroPJ(cadastroPj, result);
 		  
 		  if(result.hasErrors()) { 
 			  result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage())); 
