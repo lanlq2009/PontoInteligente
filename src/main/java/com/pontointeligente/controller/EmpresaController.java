@@ -14,7 +14,7 @@ import com.pontointeligente.controller.base.ControllerBase;
 import com.pontointeligente.controller.response.Response;
 import com.pontointeligente.controller.utils.ControllerHelper;
 import com.pontointeligente.domain.Empresa;
-import com.pontointeligente.model.EmpresaDTO;
+import com.pontointeligente.dto.EmpresaDto;
 import com.pontointeligente.services.EmpresaService;
 
 @RestController
@@ -28,9 +28,9 @@ public class EmpresaController extends ControllerBase {
 	
 	
 	@GetMapping("/cnpj/{cnpj}")
-	public ResponseEntity<Response<EmpresaDTO>> buscaEmpresaPorCnpj(@PathVariable("cnpj") String cnpj){
+	public ResponseEntity<Response<EmpresaDto>> buscaEmpresaPorCnpj(@PathVariable("cnpj") String cnpj){
 		
-		Response<EmpresaDTO> response = new Response<EmpresaDTO>();
+		Response<EmpresaDto> response = new Response<EmpresaDto>();
 		
 		Optional<Empresa> empresa = this.empresaService.buscaPorCnpj(cnpj);
 		
@@ -39,7 +39,7 @@ public class EmpresaController extends ControllerBase {
 			return ResponseEntity.badRequest().body(response);
 		}
 		
-		EmpresaDTO dto = this.conversor.converterEmpresaParaEmpresaDTO(empresa.get());
+		EmpresaDto dto = this.conversor.converterEmpresaParaEmpresaDTO(empresa.get());
 		response.setData(dto);
 		
 		return ResponseEntity.ok(response);

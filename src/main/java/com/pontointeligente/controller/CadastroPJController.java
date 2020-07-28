@@ -18,7 +18,7 @@ import com.pontointeligente.controller.response.Response;
 import com.pontointeligente.controller.utils.ControllerHelper;
 import com.pontointeligente.domain.Empresa;
 import com.pontointeligente.domain.Funcionario;
-import com.pontointeligente.model.CadastroPJ;
+import com.pontointeligente.dto.CadastroPjDto;
 import com.pontointeligente.services.EmpresaService;
 import com.pontointeligente.services.FuncionarioService;
 
@@ -37,10 +37,10 @@ public class CadastroPJController extends ControllerBase {
 	
 			
 	@PostMapping("cadastro/pj") 
-	public ResponseEntity<Response<CadastroPJ>> cadastrar(@Valid @RequestBody CadastroPJ cadastroPj, BindingResult result)
+	public ResponseEntity<Response<CadastroPjDto>> cadastrar(@Valid @RequestBody CadastroPjDto cadastroPj, BindingResult result)
 	  throws NoSuchAlgorithmException {
 	  
-		  Response<CadastroPJ> response = new Response<CadastroPJ>();
+		  Response<CadastroPjDto> response = new Response<CadastroPjDto>();
 		  
 		  this.settings();
 		  

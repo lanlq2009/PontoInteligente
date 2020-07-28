@@ -17,3 +17,11 @@ Funcionario
   "valorHora": "50",
   "cnpj": "21661519000190"
 }
+
+Update funcionario: id/3
+{
+  "nome":"Fulano de Talos IV",
+  "valorHora": "80",
+  "qtdHorasTrabalhoDia":"9.0",
+  "cnpj": "21661519000190"
+}

@@ -5,15 +5,15 @@ import java.util.Optional;
 
 import com.pontointeligente.domain.Empresa;
 import com.pontointeligente.domain.Funcionario;
+import com.pontointeligente.dto.CadastroPfDto;
+import com.pontointeligente.dto.CadastroPjDto;
+import com.pontointeligente.dto.EmpresaDto;
+import com.pontointeligente.dto.FuncionarioDto;
 import com.pontointeligente.enuns.PerfilEnum;
-import com.pontointeligente.model.CadastroPF;
-import com.pontointeligente.model.CadastroPJ;
-import com.pontointeligente.model.EmpresaDTO;
-//import com.pontointeligente.utils.PasswordUtils;
 
 public class Conversor {
 	
-	public Empresa converterEmpresa(CadastroPJ cadastroPj) {
+	public Empresa converterEmpresa(CadastroPjDto cadastroPj) {
 		Empresa empresa = new Empresa();
 		empresa.setId(null);
 		empresa.setCnpj(cadastroPj.getCnpj());
@@ -21,7 +21,7 @@ public class Conversor {
 		return empresa;
 	}
 	
-	public Funcionario converterDtoParaFuncionario(CadastroPJ cadastroPJDto, Boolean isPJ) {
+	public Funcionario converterDtoParaFuncionario(CadastroPjDto cadastroPJDto, Boolean isPJ) {
 		Funcionario funcionario = new Funcionario();
 		funcionario.setNome(cadastroPJDto.getNome());
 		funcionario.setEmail(cadastroPJDto.getEmail());
@@ -35,9 +35,10 @@ public class Conversor {
 		funcionario.setSenha(cadastroPJDto.getSenha());
 		return funcionario;
 	}
+	
 
-	public CadastroPJ converterCadastroPJ(Funcionario funcionario) {
-		CadastroPJ cadastroPJ = new CadastroPJ();
+	public CadastroPjDto converterCadastroPJ(Funcionario funcionario) {
+		CadastroPjDto cadastroPJ = new CadastroPjDto();
 		cadastroPJ.setId(funcionario.getId());
 		cadastroPJ.setNome(funcionario.getNome());
 		cadastroPJ.setEmail(funcionario.getEmail());
@@ -46,9 +47,9 @@ public class Conversor {
 		cadastroPJ.setCnpj(funcionario.getEmpresa().getCnpj());
 		return cadastroPJ;
 	}
+		
 	
-	
-	public Funcionario converterCadastroPfParaFuncionario(CadastroPF cadastroPF) {
+	public Funcionario converterCadastroPfParaFuncionario(CadastroPfDto cadastroPF) {
 		Funcionario funcionario = new Funcionario();
 		funcionario.setNome(cadastroPF.getNome());
 		funcionario.setEmail(cadastroPF.getEmail());
@@ -62,8 +63,9 @@ public class Conversor {
 		return funcionario;
 	}
 	
-	public CadastroPF converterFuncionarioParaCadastroPf(Funcionario funcionario) {
-		CadastroPF cadastro = new CadastroPF();
+	
+	public CadastroPfDto converterFuncionarioParaCadastroPf(Funcionario funcionario) {
+		CadastroPfDto cadastro = new CadastroPfDto();
 		cadastro.setCnpj(funcionario.getEmpresa().getCnpj());
 		cadastro.setCpf(funcionario.getCpf());
 		cadastro.setEmail(funcionario.getEmail());
@@ -76,12 +78,26 @@ public class Conversor {
 	}
 	
 	
-	public EmpresaDTO converterEmpresaParaEmpresaDTO(Empresa empresa) {
-		EmpresaDTO dto = new EmpresaDTO();
+	public EmpresaDto converterEmpresaParaEmpresaDTO(Empresa empresa) {
+		EmpresaDto dto = new EmpresaDto();
 		dto.setId(empresa.getId());
 		dto.setCnpj(empresa.getCnpj());
 		dto.setRazaoSocial(empresa.getRazaoSocial());
 		return dto;
 	}
+	
+	
+	public FuncionarioDto converterFuncionarioParaFuncionarioDto(Funcionario funcionario) {
+		FuncionarioDto dto = new FuncionarioDto();
+		dto.setEmail(funcionario.getEmail());
+		dto.setId(funcionario.getId());
+		dto.setNome(funcionario.getNome());
+		funcionario.getQtdHorasAlmocoOpt().ifPresent(qtdHorasAlmoco -> dto.setQtdHorasAlmoco(Optional.of(Float.toString(qtdHorasAlmoco))));
+		funcionario.getQtdHorasTrabalhoDiaOpt().ifPresent(qtdHorasTrabalhoDia -> dto.setQtdHorasTrabalhoDia(Optional.of(Float.toString(qtdHorasTrabalhoDia))));
+		funcionario.getValorHoraOpt().ifPresent(valorHora -> dto.setValorHora(Optional.of(valorHora.toString())));
+		return dto;
+	}
+	
+	
 	
 }

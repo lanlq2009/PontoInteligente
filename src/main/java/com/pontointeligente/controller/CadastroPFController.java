@@ -19,7 +19,7 @@ import com.pontointeligente.controller.response.Response;
 import com.pontointeligente.controller.utils.ControllerHelper;
 import com.pontointeligente.domain.Empresa;
 import com.pontointeligente.domain.Funcionario;
-import com.pontointeligente.model.CadastroPF;
+import com.pontointeligente.dto.CadastroPfDto;
 import com.pontointeligente.services.EmpresaService;
 import com.pontointeligente.services.FuncionarioService;
 
@@ -35,10 +35,10 @@ public class CadastroPFController extends ControllerBase {
 	  private FuncionarioService funcionarioService;
 	  
 	  @PostMapping
-	  public ResponseEntity<Response<CadastroPF>> cadastrar(@Valid @RequestBody CadastroPF cadastroPF, BindingResult result)
+	  public ResponseEntity<Response<CadastroPfDto>> cadastrar(@Valid @RequestBody CadastroPfDto cadastroPF, BindingResult result)
 			  throws NoSuchAlgorithmException {
 		  		  
-		  Response<CadastroPF> response = new Response<CadastroPF>();
+		  Response<CadastroPfDto> response = new Response<CadastroPfDto>();
 		  
 		  super.settings(empresaService, funcionarioService);
 		  
@@ -55,7 +55,7 @@ public class CadastroPFController extends ControllerBase {
 	  }
 	  
 	  
-	  private CadastroPF cadastrarPF(CadastroPF cadastroPF) {
+	  private CadastroPfDto cadastrarPF(CadastroPfDto cadastroPF) {
           
 		  Funcionario funcionario = super.conversor.converterCadastroPfParaFuncionario(cadastroPF);
 		  

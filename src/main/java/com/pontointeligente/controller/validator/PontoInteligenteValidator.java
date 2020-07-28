@@ -7,8 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import com.pontointeligente.domain.Empresa;
-import com.pontointeligente.model.CadastroPF;
-import com.pontointeligente.model.CadastroPJ;
+import com.pontointeligente.dto.CadastroPfDto;
+import com.pontointeligente.dto.CadastroPjDto;
 import com.pontointeligente.services.EmpresaService;
 import com.pontointeligente.services.FuncionarioService;
 
@@ -35,7 +35,7 @@ public class PontoInteligenteValidator {
 	}
     
 	
-	public void validarDadosExistentesCadastroPJ(CadastroPJ cadastroPJ, BindingResult result) {
+	public void validarDadosExistentesCadastroPJ(CadastroPjDto cadastroPJ, BindingResult result) {
 		
 		this.empresaService.buscaPorCnpj(cadastroPJ.getCnpj())
 				.ifPresent(emp -> result.addError(new ObjectError("empresa", "Empresa já existente.")));
@@ -49,7 +49,7 @@ public class PontoInteligenteValidator {
 	}
 	
 	
-    public void validarDadosExistentesCadastroPF(CadastroPF cadastroPF, BindingResult result) {
+    public void validarDadosExistentesCadastroPF(CadastroPfDto cadastroPF, BindingResult result) {
 	         	
     	Optional<Empresa> empresa = this.empresaService.buscaPorCnpj(cadastroPF.getCnpj());
     	if(!empresa.isPresent()) {

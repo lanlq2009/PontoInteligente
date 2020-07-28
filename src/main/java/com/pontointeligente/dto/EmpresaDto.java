@@ -1,6 +1,6 @@
-package com.pontointeligente.model;
+package com.pontointeligente.dto;
 
-public class EmpresaDTO {
+public class EmpresaDto {
 	
 	private Long id;
 	

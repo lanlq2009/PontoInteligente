@@ -1,11 +1,11 @@
-package com.pontointeligente.model;
+package com.pontointeligente.dto;
 
 
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-public class CadastroPJ extends Pessoa {
+public class CadastroPjDto extends PessoaDto {
 	
 	
 	private String razaoSocial;

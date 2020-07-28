@@ -15,6 +15,6 @@ public interface FuncionarioService {
 	
 	Funcionario persistir(Funcionario funcionario);
 	
-	
+	Optional<Funcionario> buscarPorId(Long id);
 
 }

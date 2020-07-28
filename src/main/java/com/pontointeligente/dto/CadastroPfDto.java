@@ -1,8 +1,8 @@
-package com.pontointeligente.model;
+package com.pontointeligente.dto;
 
 import java.util.Optional;
 
-public class CadastroPF extends Pessoa {
+public class CadastroPfDto extends PessoaDto {
 	
 	private Optional<String> valorHora = Optional.empty();
 	

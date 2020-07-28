@@ -36,4 +36,9 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 		return this.respository.save(funcionario);
 	}
 
+	@Override
+	public Optional<Funcionario> buscarPorId(Long id) {
+		return this.respository.findById(id);
+	}
+
 }
