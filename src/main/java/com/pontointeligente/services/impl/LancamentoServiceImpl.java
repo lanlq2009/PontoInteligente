@@ -38,7 +38,12 @@ public class LancamentoServiceImpl implements LancamentoService {
 	public void remover(Lancamento lancamento) {
 	   this.lancamentoRepository.delete(lancamento);
 	}
-	
+
+	@Override
+	public Optional<Lancamento> buscarPorId(Long id) {
+		return this.lancamentoRepository.findById(id);
+	}
+
 	
 	
 	

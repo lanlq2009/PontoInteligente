@@ -20,4 +20,6 @@ public interface LancamentoService {
 
 	void remover(Lancamento lancamento);
 	
+	Optional<Lancamento> buscarPorId(Long id);
+	
 }

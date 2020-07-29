@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pontointeligente.controller.base.ControllerBase;
+import com.pontointeligente.controller.base.BaseController;
 import com.pontointeligente.controller.response.Response;
 import com.pontointeligente.controller.utils.ControllerHelper;
 import com.pontointeligente.domain.Empresa;
@@ -26,7 +26,7 @@ import com.pontointeligente.services.FuncionarioService;
 @RestController
 @RequestMapping(ControllerHelper.API+"/cadastro/pf")
 @CrossOrigin("*")
-public class CadastroPFController extends ControllerBase {
+public class CadastroPFController extends BaseController {
 	
 	  @Autowired   
 	  private EmpresaService empresaService;

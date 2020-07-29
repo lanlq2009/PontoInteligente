@@ -7,8 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import com.pontointeligente.domain.Empresa;
+import com.pontointeligente.domain.Funcionario;
 import com.pontointeligente.dto.CadastroPfDto;
 import com.pontointeligente.dto.CadastroPjDto;
+import com.pontointeligente.dto.LancamentoDto;
 import com.pontointeligente.services.EmpresaService;
 import com.pontointeligente.services.FuncionarioService;
 
@@ -63,6 +65,21 @@ public class PontoInteligenteValidator {
 				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email já existente.")));
 	
 	}
+    
+    
+    public void validarLancamento(LancamentoDto lancamentoDto, BindingResult result) {
+    	
+    	if(lancamentoDto.getFuncionarioId() == null) {
+    		result.addError(new ObjectError("funcionario", "Funcionario não informado"));
+    		return;
+    	}
+    	
+    	Optional<Funcionario> funcionario = this.funcionarioService.buscarPorId(lancamentoDto.getFuncionarioId());
+    	if(!funcionario.isPresent()) {
+    		result.addError(new ObjectError("funcionario", "Funcionario não encontrado"));
+    	}
+    	
+    }
 	
 	
 }

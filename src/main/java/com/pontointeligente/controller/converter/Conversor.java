@@ -1,18 +1,28 @@
 package com.pontointeligente.controller.converter;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.Optional;
+
+import org.apache.commons.lang3.EnumUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import com.pontointeligente.domain.Empresa;
 import com.pontointeligente.domain.Funcionario;
+import com.pontointeligente.domain.Lancamento;
 import com.pontointeligente.dto.CadastroPfDto;
 import com.pontointeligente.dto.CadastroPjDto;
 import com.pontointeligente.dto.EmpresaDto;
 import com.pontointeligente.dto.FuncionarioDto;
+import com.pontointeligente.dto.LancamentoDto;
 import com.pontointeligente.enuns.PerfilEnum;
+import com.pontointeligente.enuns.TipoEnum;
+import com.pontointeligente.services.LancamentoService;
+import com.pontointeligente.utils.DateUtils;
 
 public class Conversor {
-	
+		
 	public Empresa converterEmpresa(CadastroPjDto cadastroPj) {
 		Empresa empresa = new Empresa();
 		empresa.setId(null);
@@ -97,6 +107,50 @@ public class Conversor {
 		funcionario.getValorHoraOpt().ifPresent(valorHora -> dto.setValorHora(Optional.of(valorHora.toString())));
 		return dto;
 	}
+	
+	
+	public LancamentoDto converterLancamentoParaLancamentoDto(Lancamento lancamento) {
+		LancamentoDto dto = new LancamentoDto();
+		dto.setData(DateUtils.dateFormatAmerica.format(lancamento.getData()));
+		dto.setFuncionarioId(lancamento.getFuncionario().getId());
+		dto.setDescricao(lancamento.getDescricao());
+		dto.setLocalizacao(lancamento.getLocalizacao());
+		dto.setTipo(lancamento.getTipo().toString());
+		dto.setId(Optional.of(lancamento.getId()));
+		return dto;
+	}
+	
+	
+	public Lancamento converterDtoParaLancamento(LancamentoDto lancamentoDto, LancamentoService lancamentoService, BindingResult result) throws ParseException {
+		
+		Lancamento lancamento = new Lancamento();
+
+		if (lancamentoDto.getId().isPresent()) {
+			Optional<Lancamento> lanc = lancamentoService.buscarPorId(lancamentoDto.getId().get());
+			if (lanc.isPresent()) {
+				lancamento = lanc.get();
+			} else {
+				result.addError(new ObjectError("lancamento", "Lançamento não encontrado."));
+			}
+		} else {
+			lancamento.setFuncionario(new Funcionario());
+			lancamento.getFuncionario().setId(lancamentoDto.getFuncionarioId());
+		}
+
+		lancamento.setDescricao(lancamentoDto.getDescricao());
+		lancamento.setLocalizacao(lancamentoDto.getLocalizacao());
+		lancamento.setData(DateUtils.dateFormatAmerica.parse(lancamentoDto.getData()));
+
+		if (EnumUtils.isValidEnum(TipoEnum.class, lancamentoDto.getTipo())) {
+			lancamento.setTipo(TipoEnum.valueOf(lancamentoDto.getTipo()));
+		} else {
+			result.addError(new ObjectError("tipo", "Tipo inválido."));
+		}
+
+		return lancamento;
+	}
+	
+	
 	
 	
 	

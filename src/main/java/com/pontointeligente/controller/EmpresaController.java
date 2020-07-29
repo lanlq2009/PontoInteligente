@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pontointeligente.controller.base.ControllerBase;
+import com.pontointeligente.controller.base.BaseController;
 import com.pontointeligente.controller.response.Response;
 import com.pontointeligente.controller.utils.ControllerHelper;
 import com.pontointeligente.domain.Empresa;
@@ -20,7 +20,7 @@ import com.pontointeligente.services.EmpresaService;
 @RestController
 @RequestMapping(ControllerHelper.API+"/empresas")
 @CrossOrigin("*")
-public class EmpresaController extends ControllerBase {
+public class EmpresaController extends BaseController {
 
 	
 	@Autowired

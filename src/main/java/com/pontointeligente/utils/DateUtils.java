@@ -34,6 +34,8 @@ public class DateUtils {
 	public static final int YYYY                    = 9;
 			
 	private SimpleDateFormat fmtDateToFileName = new SimpleDateFormat("yyyyMMdd_HHmm");
+	
+	public static SimpleDateFormat dateFormatAmerica = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
 	public DateUtils() {
 		super();
@@ -111,6 +113,8 @@ public class DateUtils {
 	public String getAtualDateToFileName() {
 		return this.fmtDateToFileName.format(new Date().getTime());
 	}
+	
+	
 	
 
 }

@@ -5,7 +5,7 @@ import com.pontointeligente.controller.validator.PontoInteligenteValidator;
 import com.pontointeligente.services.EmpresaService;
 import com.pontointeligente.services.FuncionarioService;
 
-public class ControllerBase {
+public class BaseController {
 	
     public PontoInteligenteValidator validator = new PontoInteligenteValidator();
 	
@@ -14,6 +14,10 @@ public class ControllerBase {
 	public void settings(EmpresaService empresaService, FuncionarioService funcionarioService) {
 	   this.validator.setEmpresaService(empresaService);
 	   this.validator.setFuncionarioService(funcionarioService);
+	}
+	
+	public void settings(FuncionarioService funcionarioService) {
+		this.validator.setFuncionarioService(funcionarioService);
 	}
 
 }
