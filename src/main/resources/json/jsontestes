@@ -25,3 +25,18 @@ Update funcionario: id/3
   "qtdHorasTrabalhoDia":"9.0",
   "cnpj": "21661519000190"
 }
+Lancamento
+{
+  "data":"2020-08-03 09:00:00",
+  "tipo":"INICIO_TRABALHO",
+  "descricao":"Inicio do trabalho",
+  "localizacao":"1.2223,6.2313",
+  "funcionarioId":"3"
+}
+{
+  "data":"2020-08-03 17:30:00",
+  "tipo":"TERMINO_TRABALHO",
+  "descricao":"Termino do trabalho",
+  "localizacao":"1.2223,6.2313",
+  "funcionarioId":"3"
+}

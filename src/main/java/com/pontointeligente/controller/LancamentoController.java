@@ -50,12 +50,13 @@ public class LancamentoController extends BaseController {
 	@GetMapping(value="/funcionario/{funcionarioId}")
 	public ResponseEntity<Response<Page<LancamentoDto>>> listarPorFuncionarioId(@PathVariable("funcionarioId") Long funcionarioId,
 																				@RequestParam(value = "pag", defaultValue = "0") int pag,
-																				@RequestParam(value = "ord", defaultValue = "id") String ord,
-																				@RequestParam(value = "dir", defaultValue = "DESC") String dir){
+																				@RequestParam(value = "ord", defaultValue = "5") String maxResults,
+																				@RequestParam(value = "dir", defaultValue = "id") String dir,
+																				@RequestParam(value = "ordenacao", defaultValue = "DESC") String ordenacao){
 		
 		Response<Page<LancamentoDto>> response = new Response<Page<LancamentoDto>>();
 		
-		PageRequest pageRequest = PageRequest.of(pag, Integer.parseInt(ord),Sort.by(dir));
+		PageRequest pageRequest = this.tipoOrdenacao(pag, maxResults, dir, ordenacao);
 		
 		Page<Lancamento> lancamentos = this.lancamentoService.findByFuncionarioId(funcionarioId, pageRequest);
 		
@@ -67,6 +68,15 @@ public class LancamentoController extends BaseController {
 		
 	}
 	
+	
+	private PageRequest tipoOrdenacao(int pag, String maxResults, String dir, String ordenacao) {
+		
+		if("DESC".equals(ordenacao)) {
+			return PageRequest.of(pag, Integer.parseInt(maxResults), Sort.by(dir).descending());  
+		}
+		
+		return PageRequest.of(pag, Integer.parseInt(maxResults), Sort.by(dir).ascending());  
+	}
 	
 	
 	@GetMapping(value="/id/{id}")
