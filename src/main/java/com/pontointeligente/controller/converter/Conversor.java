@@ -20,6 +20,7 @@ import com.pontointeligente.enuns.PerfilEnum;
 import com.pontointeligente.enuns.TipoEnum;
 import com.pontointeligente.services.LancamentoService;
 import com.pontointeligente.utils.DateUtils;
+import com.pontointeligente.utils.PasswordUtils;
 
 public class Conversor {
 		
@@ -41,8 +42,7 @@ public class Conversor {
 		}else {
 			funcionario.setPerfil(PerfilEnum.ROLE_USUARIO); 	
 		}
-		//funcionario.setSenha(PasswordUtils.getEncrypt(cadastroPJDto.getSenha()));
-		funcionario.setSenha(cadastroPJDto.getSenha());
+		funcionario.setSenha(PasswordUtils.getEncrypt(cadastroPJDto.getSenha()));
 		return funcionario;
 	}
 	
@@ -65,8 +65,7 @@ public class Conversor {
 		funcionario.setEmail(cadastroPF.getEmail());
 		funcionario.setCpf(cadastroPF.getCpf());
 		funcionario.setPerfil(PerfilEnum.ROLE_USUARIO); 	
-		//funcionario.setSenha(PasswordUtils.getEncrypt(cadastroPJDto.getSenha()));
-		funcionario.setSenha(cadastroPF.getSenha());
+		funcionario.setSenha(PasswordUtils.getEncrypt(cadastroPF.getSenha()));
 		cadastroPF.getQtdHorasTrabalhadasPorDia().ifPresent(qtdHorasTrabalhadasPorDia -> funcionario.setQtdHorasTrabalhoDia(Float.valueOf(qtdHorasTrabalhadasPorDia)));
 		cadastroPF.getQtdHorasAlmoco().ifPresent(qtdHorasAlmoco -> funcionario.setQtdHorasAlmoco(Float.valueOf(qtdHorasAlmoco)));
 		cadastroPF.getValorHora().ifPresent(valorHora -> funcionario.setValorHora(new BigDecimal(valorHora)));
