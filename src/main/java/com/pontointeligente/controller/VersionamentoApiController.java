@@ -1,0 +1,38 @@
+package com.pontointeligente.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pontointeligente.controller.utils.ControllerHelper;
+
+@RestController
+@RequestMapping(ControllerHelper.API)
+public class VersionamentoApiController {
+	
+	/**
+	* Versionamento de API pela url, define versão 'v1'.
+	*
+	* @param nome
+	* @return ResponseEntity<Response<String>>
+	*/
+	@GetMapping (value="/ola/{nome}")
+	public ResponseEntity <String> olaNomeV1(@PathVariable("nome") String nome) {
+	  return ResponseEntity.ok(String.format("API v1: Olá %s!",nome));
+	}
+
+	
+	/*
+	* Versionamento de API pelo Header 'X-API-Version', define versão 'v1'.
+	*
+	* @param nome
+	* @return ResponseEntity<Response<String>>
+	*/
+	@GetMapping ( value = "/ola/{nome}" , headers = "X-API-Version=v1" )
+	public ResponseEntity < String > olaNomeHeaderV1 (@PathVariable("nome") String nome ) {
+	   return ResponseEntity.ok( String . format ( "API Header v1: Olá %s!" , nome ));
+	}
+	
+}
