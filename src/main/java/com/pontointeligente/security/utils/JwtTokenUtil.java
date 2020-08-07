@@ -1,4 +1,4 @@
-package com.pontointeligente.utils;
+package com.pontointeligente.security.utils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -11,6 +11,15 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+
+/**
+ * Agora crie um arquivo utilitário para manipular o token JWT
+ * 
+ * @author allan
+ *
+ */
+
 
 @Component
 public class JwtTokenUtil {

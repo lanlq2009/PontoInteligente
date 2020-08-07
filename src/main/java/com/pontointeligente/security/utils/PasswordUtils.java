@@ -1,5 +1,5 @@
 
-  package com.pontointeligente.utils;
+  package com.pontointeligente.security.utils;
   
   import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
   

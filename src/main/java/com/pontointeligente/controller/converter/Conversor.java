@@ -18,9 +18,9 @@ import com.pontointeligente.dto.FuncionarioDto;
 import com.pontointeligente.dto.LancamentoDto;
 import com.pontointeligente.enuns.PerfilEnum;
 import com.pontointeligente.enuns.TipoEnum;
+import com.pontointeligente.security.utils.PasswordUtils;
 import com.pontointeligente.services.LancamentoService;
 import com.pontointeligente.utils.DateUtils;
-import com.pontointeligente.utils.PasswordUtils;
 
 public class Conversor {
 		
