@@ -1,4 +1,4 @@
-package com.pontointeligente.security;
+package com.pontointeligente.security.filter;
 
 import java.io.IOException;
 

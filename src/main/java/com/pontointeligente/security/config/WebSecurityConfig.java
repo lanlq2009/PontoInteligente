@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.pontointeligente.security.JwtAuthenticationEntryPoint;
-import com.pontointeligente.security.JwtAuthenticationTokenFilter;
+import com.pontointeligente.security.filter.JwtAuthenticationTokenFilter;
 
 /**
  * Essa é a configuração básica do Spring Security, agora podemos avançar e habilitá-lo na

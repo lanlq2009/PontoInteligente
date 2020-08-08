@@ -1,4 +1,4 @@
-package com.pontointeligente.dto;
+package com.pontointeligente.security.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

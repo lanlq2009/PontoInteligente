@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pontointeligente.controller.response.Response;
-import com.pontointeligente.dto.JwtAuthenticationDto;
-import com.pontointeligente.dto.TokenDto;
+import com.pontointeligente.security.dto.JwtAuthenticationDto;
+import com.pontointeligente.security.dto.TokenDto;
 import com.pontointeligente.security.utils.JwtTokenUtil;
 
 @RestController

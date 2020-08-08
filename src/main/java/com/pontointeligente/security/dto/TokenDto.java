@@ -1,4 +1,4 @@
-package com.pontointeligente.dto;
+package com.pontointeligente.security.dto;
 
 public class TokenDto {
 	
