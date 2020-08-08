@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
 
 /**
  * Criaremos agora uma classe que será responsável por tratar um erro de autenticação.
  * */
+@Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint{
 
 	@Override

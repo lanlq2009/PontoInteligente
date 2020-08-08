@@ -1,4 +1,4 @@
-package com.pontointeligente.controller;
+package com.pontointeligente.security.controller;
 
 import java.util.Optional;
 
