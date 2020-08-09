@@ -3,6 +3,7 @@ package com.pontointeligente.security.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,7 +26,7 @@ aplicação Spring Boot, para isso crie a classe WebSecurityConfig.java
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity ( prePostEnabled = true )
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
@@ -36,9 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder)	throws Exception {
-		
-	   authenticationManagerBuilder . userDetailsService (this.userDetailsService).passwordEncoder(passwordEncoder());
-	   
+	   authenticationManagerBuilder.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean
@@ -56,16 +55,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
-		httpSecurity.csrf().disable().exceptionHandling().authenticationEntryPoint (unauthorizedHandler).and()
-		            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		            .and().authorizeRequests()
-					.antMatchers( "/auth/**", "/api/cadastrar-pj", "/api/cadastrar-pf", "/v2/api-docs",
-						        "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**")
-					.permitAll ().anyRequest().authenticated();
+		httpSecurity.csrf()
+		            .disable()
+		            .exceptionHandling()
+		            .authenticationEntryPoint (unauthorizedHandler)
+		            .and()
+		            .sessionManagement()
+		            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		            .and()
+		            .authorizeRequests()
+					.antMatchers( "/auth/**", "/api/cadastro/pj", "/api/cadastro/pf","/api/empresas/cnpj"  , "/v2/api-docs",
+						          "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**")
+					.permitAll()
+					.anyRequest()
+					.authenticated();
 		
 		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 		httpSecurity.headers().cacheControl();
 	
+	}
+	
+	@Bean
+	public AuthenticationManager getAuthenticationManager() throws Exception {
+	       return super.authenticationManagerBean();
 	}
 
 }
