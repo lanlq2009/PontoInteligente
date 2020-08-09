@@ -57,16 +57,14 @@ public class AuthenticationController {
 	                                                         BindingResult result) throws AuthenticationException {
 		
 		Response<TokenDto> response = new Response<TokenDto>();
-		
 		if(result.hasErrors()) {
-			
 			result.getAllErrors().forEach( error -> response.getErrors().add(error.getDefaultMessage()));
 			return ResponseEntity . badRequest (). body ( response );
-		
 		}
 		
 		Authentication authentication = authenticationManager.
-				                        authenticate(new UsernamePasswordAuthenticationToken (authenticationDto.getEmail(), authenticationDto.getSenha ()));
+				                        authenticate(new UsernamePasswordAuthenticationToken(authenticationDto.getEmail(), 
+				                        		                                             authenticationDto.getSenha ()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationDto.getEmail());
@@ -91,34 +89,24 @@ public class AuthenticationController {
 		Response<TokenDto> response = new Response<TokenDto>();
 		
 		Optional<String> token = Optional.ofNullable(request.getHeader(TOKEN_HEADER));
-		
 		if (token.isPresent() && token.get().startsWith(BEARER_PREFIX)) {
-			
 		    token = Optional . of ( token . get (). substring (7));
-		
 		}
 		
 		
 		if (! token . isPresent ()) {
-			
 		    response.getErrors().add("Token não informado.");
-		
 		} else if (! jwtTokenUtil.tokenValido(token.get())) {
-		
 			response.getErrors().add("Token inválido ou expirado.");
-		
 		}
 		
 		if (!response.getErrors().isEmpty()) {
-			
 		  return ResponseEntity . badRequest (). body ( response );
-		
 		}
 		
 		String refreshedToken = jwtTokenUtil.refreshToken(token.get());
 		response.setData(new TokenDto(refreshedToken));
-		
-		return ResponseEntity . ok ( response );
+		return ResponseEntity.ok( response );
 		
 	}
 	

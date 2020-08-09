@@ -6,11 +6,13 @@
   public class PasswordUtils {
   
   
-  public static String getEncrypt(String senha) { 
-	  
-	  BCryptPasswordEncoder criptos = new BCryptPasswordEncoder(); return criptos.encode(senha); 
-	  
-  }
+    public static String getEncrypt(String senha) { 
+    	if (senha == null) {
+			return senha;
+		}
+		BCryptPasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
+		return bCryptEncoder.encode(senha);
+    }
   
   }
  

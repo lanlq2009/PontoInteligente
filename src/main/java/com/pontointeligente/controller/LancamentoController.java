@@ -83,16 +83,12 @@ public class LancamentoController extends BaseController {
 	public ResponseEntity<Response<LancamentoDto>> listarPorId(@PathVariable("id") Long id){
 		
 		Response<LancamentoDto> response = new Response<LancamentoDto>();
-		
 		Optional<Lancamento> lancamentos = this.lancamentoService.buscarPorId(id);
-		
 		if(!lancamentos.isPresent()) {
 			response.getErrors().add("Lancamento não encontrado "+ id);
 			ResponseEntity.badRequest().body(response);
 		}
-		
 		response.setData(this.converterParaDto(lancamentos.get()));
-		
 		return ResponseEntity.ok(response);
 	}
 	
