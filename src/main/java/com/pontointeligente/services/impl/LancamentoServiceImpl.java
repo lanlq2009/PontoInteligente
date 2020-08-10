@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +32,7 @@ public class LancamentoServiceImpl implements LancamentoService {
 	}
 
 	@Override
+	@CachePut("lancamentoPorId") // Atualiza o cache caso tenha sido alterado.
 	public Lancamento persistir(Lancamento lancamento) {
 		return this.lancamentoRepository.save(lancamento);
 	}
@@ -41,7 +43,7 @@ public class LancamentoServiceImpl implements LancamentoService {
 	}
 
 	@Override
-	@Cacheable("lancamentoPorId")
+	@Cacheable("lancamentoPorId") // Coloca em cache o lancamento para facilitar a obtençao de dados.
 	public Optional<Lancamento> buscarPorId(Long id) {
 		return this.lancamentoRepository.findById(id);
 	}
